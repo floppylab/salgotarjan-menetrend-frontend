@@ -1,7 +1,7 @@
 <template>
   <main>
     <schedule-header />
-    <schedule-map v-show="stops" :center="[longitude, latitude]" :zoom="zoom" />
+    <schedule-map v-if="stops" :center="[longitude, latitude]" :zoom="zoom" />
     <!--<div id="location-button" @click="locateUser">-->
     <!--<font-awesome-icon icon="location-arrow" size="2x" />-->
     <!--</div>-->

@@ -97,6 +97,7 @@ export default {
       return degrees * (Math.PI / 180)
     },
     updateMap (vm) {
+      console.log('uhguhtgth')
       setTimeout(function () {
         vm.$map.updateSize()
       }, 200)
