@@ -45,6 +45,9 @@ export default {
     },
     calculateStopTime (minutes) {
       return this.$moment(this.time, 'HH:mm:ss').add(minutes, 'minutes').format('HH:mm')
+    },
+    goTo (link) {
+      this.$router.push(link)
     }
   }
 }

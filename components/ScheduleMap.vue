@@ -1,14 +1,10 @@
 <template>
   <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true" @click="clickCoordinate = $event.coordinate">
-    <vl-view :zoom.sync="zoom" :center="center" />
+    <vl-view :zoom.sync="mapZoom" :center="mapCenter" />
 
     <vl-layer-tile id="osm">
       <vl-source-osm />
     </vl-layer-tile>
-
-    <!--<vl-layer-vector-tile>-->
-    <!--<vl-source-vector-tile :url="url"></vl-source-vector-tile>-->
-    <!--</vl-layer-vector-tile>-->
 
     <vl-feature
       v-for="stop in stops"
@@ -71,13 +67,27 @@ export default {
       url: 'https://api.maptiler.com/maps/de13c2b7-2743-4473-ab17-1f93eb5c3eb8/style.json?key=wykXPxOsQENOPcBVxMFS',
 
       clickCoordinate: undefined,
-      selectedFeatures: []
+      selectedFeatures: [],
+      mapZoom: null,
+      mapCenter: null
     }
   },
   computed: {
     stops () {
       return this.$store.getters.stops
     }
+  },
+  watch: {
+    zoom (val) {
+      this.mapZoom = val
+    },
+    center (val) {
+      this.mapCenter = val
+    }
+  },
+  created () {
+    this.mapZoom = this.zoom
+    this.mapCenter = this.center
   },
   methods: {
     pointOnSurface (geom) {
@@ -86,7 +96,6 @@ export default {
     rad (degrees) {
       return degrees * (Math.PI / 180)
     }
-
   }
 }
 </script>

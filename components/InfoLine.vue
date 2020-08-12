@@ -90,4 +90,14 @@ export default {
     background-color: white;
   }
 
+  #lines {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  #lines .number {
+    margin: 0.2rem 0.5rem 0.2rem 0;;
+  }
+
 </style>

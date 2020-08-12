@@ -3,17 +3,22 @@
     <schedule-header v-if="line" :active="2" :title="line.number + ' ' + line.description" />
     <template v-if="line && stops">
       <div id="line" class="scrollable">
-        <div v-if="active === 0 && departures">
-          <table>
-            <tbody>
+        <div v-if="active === 0">
+          <div v-if="departures && departures.length > 0">
+            <table>
+              <tbody>
               <tr v-for="hour in 19" :key="hour">
                 <th>{{ hour + 3 }}</th>
                 <td>
                   <departure v-for="(departure, index) in hourDepartures(hour + 3)" :key="index" :departure="departure" />
                 </td>
               </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
+          <div v-else id="no-more">
+            <p>Nem indul járat ezen a napon.</p>
+          </div>
         </div>
         <div v-if="active === 1">
           <info-line
