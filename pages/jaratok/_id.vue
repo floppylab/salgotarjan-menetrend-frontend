@@ -91,6 +91,9 @@ export default {
     },
     hourDepartures (hour) {
       return this.departures.filter(d => d.time.startsWith(('0' + hour).slice(-2)))
+    },
+    goTo (link) {
+      this.$router.push(link)
     }
   }
 }
