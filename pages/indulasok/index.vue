@@ -5,7 +5,7 @@
       <form>
         <div class="form-group">
           <label>nap</label>
-          <date-picker v-model="date" format="yyyy. MM. dd." :language="hu" :open-date="new Date()" />
+          <date-picker v-model="date" format="yyyy. MM. dd." :language="hu" :open-date="new Date()" monday-first />
         </div>
         <div class="form-group">
           <label>járat</label>
