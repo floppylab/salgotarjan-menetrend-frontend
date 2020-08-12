@@ -106,11 +106,15 @@ export default {
   form {
     display: flex;
     padding: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    align-items: stretch;
   }
 
   form > .form-group {
     flex-grow: 1;
-    margin: 0.5rem
+    margin: 0.5rem;
+    max-width: 100%;
   }
 
 </style>

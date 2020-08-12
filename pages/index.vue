@@ -1,10 +1,10 @@
 <template>
   <main>
     <schedule-header />
-    <schedule-map v-if="stops" :center="[longitude, latitude]" :zoom="zoom" />
-    <div id="location-button" @click="locateUser">
-      <font-awesome-icon icon="location-arrow" size="2x" />
-    </div>
+    <schedule-map v-show="stops" :center="[longitude, latitude]" :zoom="zoom" />
+    <!--<div id="location-button" @click="locateUser">-->
+    <!--<font-awesome-icon icon="location-arrow" size="2x" />-->
+    <!--</div>-->
   </main>
 </template>
 
@@ -43,7 +43,7 @@ export default {
     },
     locateUser () {
       if (process.client || process.browser) {
-        console.log(navigator.geolocation)
+        // console.log(navigator.geolocation)
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(this.goToPosition)
         }

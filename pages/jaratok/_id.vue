@@ -7,12 +7,12 @@
           <div v-if="departures && departures.length > 0">
             <table>
               <tbody>
-              <tr v-for="hour in 19" :key="hour">
-                <th>{{ hour + 3 }}</th>
-                <td>
-                  <departure v-for="(departure, index) in hourDepartures(hour + 3)" :key="index" :departure="departure" />
-                </td>
-              </tr>
+                <tr v-for="hour in 19" :key="hour">
+                  <th>{{ hour + 3 }}</th>
+                  <td>
+                    <departure v-for="(departure, index) in hourDepartures(hour + 3)" :key="index" :departure="departure" />
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

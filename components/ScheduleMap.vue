@@ -1,5 +1,5 @@
 <template>
-  <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true" @click="clickCoordinate = $event.coordinate">
+  <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true" @click="clickCoordinate = $event.coordinate" @mounted="updateMap">
     <vl-view :zoom.sync="mapZoom" :center="mapCenter" />
 
     <vl-layer-tile id="osm">
@@ -95,6 +95,11 @@ export default {
     },
     rad (degrees) {
       return degrees * (Math.PI / 180)
+    },
+    updateMap (vm) {
+      setTimeout(function () {
+        vm.$map.updateSize()
+      }, 200)
     }
   }
 }

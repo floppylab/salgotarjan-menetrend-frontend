@@ -202,6 +202,7 @@ form label {
   background: $input-background-color;
   max-width: 100%;
   height: 2.5rem;
+  max-width: calc(100% - 1rem);
 }
 
 .form-group input:focus, .form-group textarea:focus {
@@ -265,6 +266,7 @@ textarea {
 
 .vdp-datepicker input {
   width: 100%;
+  max-width: unset;
 }
 
 /* --------- TABLES --------- */
