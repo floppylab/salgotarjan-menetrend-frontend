@@ -59,7 +59,10 @@ export default {
   },
   computed: {
     lines () {
-      return this.$store.getters.lines
+      const lineList = [...this.$store.getters.lines]
+      if (!lineList) { return [] }
+      lineList.sort((a, b) => a.number.localeCompare(b.number, 'en', { numeric: true }))
+      return lineList
     },
     departures () {
       return this.$store.getters.lineDepartures

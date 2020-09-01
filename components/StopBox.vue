@@ -3,8 +3,8 @@
     <nuxt-link :to="'megallok/' + stop.id">
       <p>{{ stop.name }}</p>
       <div class="lines">
-        <div v-for="line in stop.lines" :key="line.id" class="number">
-          {{ line.number }}
+        <div v-for="(line, index) in lines" :key="index" class="number">
+          {{ line }}
         </div>
       </div>
     </nuxt-link>
@@ -19,6 +19,15 @@ export default {
     stop: {
       type: Object,
       default: () => {}
+    }
+  },
+  computed: {
+    lines () {
+      let lineNumbers = this.stop.lines.map(line => line.number)
+      lineNumbers = [...new Set(lineNumbers)]
+      // lineNumbers.sort()
+      lineNumbers.sort((a, b) => a.number.localeCompare(b.number, 'en', { numeric: true }))
+      return lineNumbers
     }
   },
   methods: {}

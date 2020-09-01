@@ -8,8 +8,8 @@
     </div>
     <div>{{ time }}</div>
     <div v-if="lines.length > 0" id="lines">
-      <div v-for="line in lines" :key="line.id" class="number" @click.stop="goTo('/jaratok/' + line.id)">
-        {{ line.number }}
+      <div v-for="line in lines" :key="line.id" class="number">
+        {{ line }}
       </div>
     </div>
   </div>

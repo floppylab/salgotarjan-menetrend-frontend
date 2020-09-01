@@ -1,7 +1,7 @@
 <template>
   <main>
     <schedule-header :title="stop ? stop.name : null" :active="3" />
-    <template v-if="upcoming.length > 0">
+    <div v-if="upcoming.length > 0" class="scrollable" >
       <info-line
         v-for="(departure, index) in upcoming"
         :key="index"
@@ -10,7 +10,7 @@
         :time="departure.time.slice(0, -3)"
         @click.native="viewDepartureDetails(departure)"
       />
-    </template>
+    </div>
     <div v-else id="no-more">
       <p>
         Nem indul ma már több járat.

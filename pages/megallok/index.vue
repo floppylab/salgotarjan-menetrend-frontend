@@ -2,7 +2,7 @@
   <main>
     <schedule-header :active="3" title="Megállók" />
     <div class="scrollable">
-      <info-line v-for="(stop, index) in stops" :key="index" :text="stop.name" :lines="stop.lines" @click.native="goTo('/megallok/' + stop.id)" />
+      <info-line v-for="(stop, index) in stops" :key="index" :text="stop.name" :lines="uniqueAndSort(stop.lines)" @click.native="goTo('/megallok/' + stop.id)" />
     </div>
   </main>
 </template>
@@ -34,6 +34,14 @@ export default {
     },
     line (id) {
       return this.$store.getters.lines.find(line => line.id === id)
+    },
+    uniqueAndSort (lines) {
+      let lineList = [...lines]
+      if (!lineList) { return [] }
+      lineList = lineList.map(line => line.number)
+      lineList = [...new Set(lineList)]
+      lineList.sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
+      return lineList
     }
   }
 }
