@@ -25,8 +25,7 @@ export default {
     lines () {
       let lineNumbers = this.stop.lines.map(line => line.number)
       lineNumbers = [...new Set(lineNumbers)]
-      // lineNumbers.sort()
-      lineNumbers.sort((a, b) => a.number.localeCompare(b.number, 'en', { numeric: true }))
+      lineNumbers.sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
       return lineNumbers
     }
   },
