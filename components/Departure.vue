@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     viewDepartureDetails () {
-      this.$router.push(`/indulasok/indulas?line=${this.departure.line}&time=${this.departure.time}`)
+      this.$router.push(`/indulasok/indulas?line=${this.departure.line}&time=${this.departure.departureTime}`)
     }
   }
 }

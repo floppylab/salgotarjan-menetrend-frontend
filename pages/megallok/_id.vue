@@ -50,7 +50,7 @@ export default {
       return this.$store.getters.lines.find(line => line.id === id)
     },
     viewDepartureDetails (departure) {
-      this.$router.push(`/indulasok/indulas?line=${departure.line}&time=${departure.time}`)
+      this.$router.push(`/indulasok/indulas?line=${departure.line}&time=${departure.departureTime}`)
     }
   }
 }
