@@ -35,7 +35,7 @@ export default {
   css: [
     '~assets/styles.scss',
     '@fortawesome/fontawesome-free/css/all.css',
-    '@fortawesome/fontawesome-free/css/fontawesome.css'
+    // '@fortawesome/fontawesome-free/css/fontawesome.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -45,7 +45,7 @@ export default {
     { src: '~/plugins/vuelayers.js', ssr: false },
     { src: '~plugins/datepicker.js', ssr: false },
     { src: '~plugins/vue-notification.js', ssr: false },
-    { src: '~plugins/ga.js', mode: 'client' },
+    // { src: '~plugins/ga.js', mode: 'client' },
     { src: '~plugins/axios.js' }
   ],
   /*

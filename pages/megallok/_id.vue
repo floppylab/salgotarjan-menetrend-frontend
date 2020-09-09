@@ -1,7 +1,7 @@
 <template>
   <main>
     <schedule-header :title="stop ? stop.name : null" :active="3" />
-    <div v-if="upcoming.length > 0" class="scrollable" >
+    <div v-if="upcoming.length > 0" class="scrollable">
       <info-line
         v-for="(departure, index) in upcoming"
         :key="index"
