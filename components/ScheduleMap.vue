@@ -6,21 +6,23 @@
       <vl-source-osm />
     </vl-layer-tile>
 
-    <vl-feature
-      v-for="stop in stops"
-      :id="'stop' + stop.id"
-      :key="stop.id"
-      class="stop"
-      :properties="{ id: stop.id, name: stop.name, lines: stop.lines }"
-    >
-      <vl-geom-point :coordinates="[stop.longitude, stop.latitude]" />
-      <vl-style-box>
-        <vl-style-text :text="'\uf04b'" font="900 20px 'Font Awesome 5 Free'" :rotation="rad(30 + stop.direction)">
-          <vl-style-fill :color="'#086972'" />
-          <vl-style-fill :color="'#08828b'" />
-        </vl-style-text>
-      </vl-style-box>
-    </vl-feature>
+    <template v-if="fontAwesomeLoaded">
+      <vl-feature
+        v-for="stop in stops"
+        :id="'stop' + stop.id"
+        :key="stop.id"
+        class="stop"
+        :properties="{ id: stop.id, name: stop.name, lines: stop.lines }"
+      >
+        <vl-geom-point :coordinates="[stop.longitude, stop.latitude]" />
+        <vl-style-box>
+          <vl-style-text :text="'\uf04b'" font="900 20px 'Font Awesome 5 Free'" :rotation="rad(30 + stop.direction)">
+            <vl-style-fill :color="'#086972'" />
+            <vl-style-fill :color="'#08828b'" />
+          </vl-style-text>
+        </vl-style-box>
+      </vl-feature>
+    </template>
 
     <vl-interaction-select :features.sync="selectedFeatures">
       <template slot-scope="select">
@@ -69,7 +71,9 @@ export default {
       clickCoordinate: undefined,
       selectedFeatures: [],
       mapZoom: null,
-      mapCenter: null
+      mapCenter: null,
+
+      fontAwesomeLoaded: false
     }
   },
   computed: {
@@ -88,6 +92,7 @@ export default {
   created () {
     this.mapZoom = this.zoom
     this.mapCenter = this.center
+    this.checkIfFontAwesomeIsLoaded()
   },
   methods: {
     pointOnSurface (geom) {
@@ -100,6 +105,23 @@ export default {
       setTimeout(function () {
         vm.$map.updateSize()
       }, 200)
+    },
+    checkIfFontAwesomeIsLoaded () {
+      if (process.client) {
+        const span = document.createElement('span')
+        span.className = 'fa'
+        document.body.appendChild(span)
+        // let result = (span.style.fontFamily === 'FontAwesome')
+        // const result = window.getComputedStyle(span).getPropertyValue('font-family') === 'Font Awesome 5 Free'
+        // document.body.removeChild(span)
+        console.log(window.getComputedStyle(span).getPropertyValue('font-family'))
+        if (window.getComputedStyle(span).getPropertyValue('font-family') !== '"Font Awesome 5 Free"') {
+          console.log(window.getComputedStyle(span).getPropertyValue('font-family') === '"Font Awesome 5 Free"')
+          setTimeout(this.checkIfFontAwesomeIsLoaded, 1000)
+        } else {
+          this.fontAwesomeLoaded = true
+        }
+      }
     }
   }
 }

@@ -33,8 +33,8 @@ export default {
   ** Global CSS
   */
   css: [
-    '~assets/styles.scss',
     '@fortawesome/fontawesome-free/css/all.css',
+    '~assets/styles.scss',
     // '@fortawesome/fontawesome-free/css/fontawesome.css'
   ],
   /*
