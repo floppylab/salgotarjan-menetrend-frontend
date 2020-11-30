@@ -6,7 +6,7 @@
       <vl-source-osm />
     </vl-layer-tile>
 
-    <template v-if="fontAwesomeLoaded">
+    <template>
       <vl-feature
         v-for="stop in stops"
         :id="'stop' + stop.id"
