@@ -2,7 +2,7 @@
   <main>
     <schedule-header />
     <p id="marker">Salgótarján menetrend</p>
-    <schedule-map v-if="stops" :center="[longitude, latitude]" :zoom="zoom" />
+    <schedule-map :center="[longitude, latitude]" :zoom="zoom" />
     <!--<div id="location-button" @click="locateUser">-->
     <!--<font-awesome-icon icon="location-arrow" size="2x" />-->
     <!--</div>-->
@@ -59,7 +59,9 @@ export default {
 <style>
 
   #marker {
-    display: none;
+    position: absolute;
+    top: -2000px;
+    left: -2000px;
   }
 
   #marker::before {

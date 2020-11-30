@@ -6,7 +6,7 @@
       <vl-source-osm />
     </vl-layer-tile>
 
-    <template>
+    <template v-if="stops">
       <vl-feature
         v-for="stop in stops"
         :id="'stop' + stop.id"
