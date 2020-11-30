@@ -1,6 +1,7 @@
 <template>
   <main>
     <schedule-header />
+    <p id="marker">Salgótarján menetrend</p>
     <schedule-map v-if="stops" :center="[longitude, latitude]" :zoom="zoom" />
     <!--<div id="location-button" @click="locateUser">-->
     <!--<font-awesome-icon icon="location-arrow" size="2x" />-->
@@ -36,7 +37,8 @@ export default {
     this.$store.dispatch('getLines')
   },
   methods: {
-    /*goToPosition (position) {
+    /*
+    goToPosition (position) {
       this.latitude = position.coords.latitude
       this.longitude = position.coords.longitude
       this.zoom = 18
@@ -48,12 +50,24 @@ export default {
           navigator.geolocation.getCurrentPosition(this.goToPosition)
         }
       }
-    }*/
+    }
+    */
   }
 }
 </script>
 
 <style>
+
+  #marker {
+    display: none;
+  }
+
+  #marker::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 20px;
+    content: '\f04b';
+  }
 
   /*
   #location-button {
