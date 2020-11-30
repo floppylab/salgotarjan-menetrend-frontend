@@ -36,7 +36,7 @@ export default {
     this.$store.dispatch('getLines')
   },
   methods: {
-    goToPosition (position) {
+    /*goToPosition (position) {
       this.latitude = position.coords.latitude
       this.longitude = position.coords.longitude
       this.zoom = 18
@@ -48,13 +48,14 @@ export default {
           navigator.geolocation.getCurrentPosition(this.goToPosition)
         }
       }
-    }
+    }*/
   }
 }
 </script>
 
 <style>
 
+  /*
   #location-button {
     position: absolute;
     bottom: 10px;
@@ -62,5 +63,6 @@ export default {
     color: #678fa6;
     z-index: 10000;
   }
+  */
 
 </style>
